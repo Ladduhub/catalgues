@@ -1,0 +1,329 @@
+    [
+    {
+        "id": "scooter-cover1",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Grip cover",
+        "partCode": "AM00000084",
+        "images": [
+            "/static/images/AnM/Gripcover.jpg",
+            "/static/images/AnM/Gripcover1.jpg"
+        ],
+        "description": "Motorcycle grip cover for enhanced comfort and control."
+    },
+    {
+        "id": "seat-cover",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Rizta Body Guard",
+        "partCode": "AM00000092",
+        "images": [
+            "/static/images/AnM/RiztaBodyGuard.jpg"
+        ],
+        "description": "Rizta Body Guard"
+    },
+    {
+        "id": "ather-BACKREST",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Backrest Assy",
+        "partCode": "AM00000450",
+        "images": [
+            "/static/images/AnM/BackrestAssy.jpg",
+            "/static/images/AnM/BackrestAssy.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "ather-TIRE",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Tire inflator",
+        "partCode": "AM00000089",
+        "images": [
+            "/static/images/AnM/Tireinflator.jpg",
+            "/static/images/AnM/Tireinflator1.jpg",
+            "/static/images/AnM/Tireinflator2.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "ather-frunk",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Frunk - Front storage of Rizta ",
+        "partCode": "AM00000209",
+        "images": [
+            "/static/images/AnM/FrunkFront storageofRizta.Jpg",
+            "/static/images/AnM/FrunkFront storageofRizta1.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "ather-floor",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Floor Mat - Parallel Lines ",
+        "partCode": "AM00000066",
+        "images": [
+            "/static/images/AnM/450Pmat.jpg",
+            "/static/images/AnM/FrunkFront storageofRizta1.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "floor-mat-circles",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Floor Mat - Circles",
+        "partCode": "AM00000067",
+        "images": [
+            "/static/images/AnM/450Cmat.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "floor-mat-patches",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Floor Mat - Patches",
+        "partCode": "AM00000068",
+        "images": [
+            "/static/images/AnM/450pamat.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "care-kit",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Care Kit",
+        "partCode": "AM00000086",
+        "images": [
+            "/static/images/AnM/carekit.jpg",
+            "/static/images/AnM/carekit1.jpg",
+            "/static/images/AnM/carekit2.jpg",
+            "/static/images/AnM/carekit3.jpg",
+            "/static/images/AnM/carekit4.jpg",
+            "/static/images/AnM/carekit5.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "scooter-cover",
+        "modelId": "450",
+        "categoryId": "anm-accessories",
+        "name": "Scooter Cover - 450 Series",
+        "partCode": "AM00000087",
+        "images": [
+            "/static/images/AnM/450cover.jpg",
+            "/static/images/AnM/450cover1.jpg",
+            "/static/images/AnM/450cover2.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "rizta-multi-purpose-charger",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Rizta Multi Purpose Charger",
+        "partCode": "AM00000132",
+        "images": [
+            "/static/images/AnM/multicharge.jpg",
+            "/static/images/AnM/multicharge1.jpg",
+            "/static/images/AnM/multicharge2.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "scooter-cover-rizta",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Scooter Cover - Rizta",
+        "partCode": "AM00000258",
+        "images": [
+            "/static/images/AnM/riztaScover.jpg",
+            "/static/images/AnM/riztaScover1.jpg",
+            "/static/images/AnM/riztaScover2.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "rizta-seat-cover-yellow-highlight",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Rizta Seat Cover with Yellow Highlight",
+        "partCode": "AM00000394",
+        "images": [
+            "/static/images/AnM/riztaYHcover.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "rizta-seat-cover-grey-black",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Rizta Seat Cover Grey and Black",
+        "partCode": "AM00000395",
+        "images": [
+            "/static/images/AnM/riztaGBcover.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "rizta-seat-cover-bg-yellow-band",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Rizta Seat Cover B&G With Yellow Band",
+        "partCode": "AM00000396",
+        "images": [
+            "/static/images/AnM/riztaYBcover.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "side-step-assembly",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Side Step Assembly",
+        "partCode": "AM0011A001MNN",
+        "images": [
+            "/static/images/AnM/riztaSStep.jpg",
+            "/static/images/AnM/riztaSStep1.jpg",
+            "/static/images/AnM/riztaSStep2.jpg",
+            "/static/images/AnM/riztaSStep3.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "rizta-floor-mat-grey",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Rizta Floor Mat Grey",
+        "partCode": "AMAM000402",
+        "images": [
+            "/static/images/AnM/riztaGBmat.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "rizta-floor-mat-yellow-grey",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Rizta Floor Mat Yellow Grey",
+        "partCode": "AMAM000403",
+        "images": [
+            "/static/images/AnM/riztaYHmat.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "450-frunk",
+        "modelId": "450",
+        "categoryId": "anm-storage",
+        "name": "Frunk - Front storage of Ather 450",
+        "partCode": "BE9999Z001ANN",
+        "images": [
+            "/static/images/AnM/450frunk.jpg",
+            "/static/images/AnM/450frunk1.jpg",
+            "/static/images/AnM/450frunk2.jpg",
+            "/static/images/AnM/450frunk3.jpg"
+        ],
+        "description": ""
+    },
+    {
+        "id": "sc-450-horizontal-lines",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "SC-450 Horizontal lines",
+        "partCode": "AM00000060",
+        "images": [
+            "/static/images/AnM/450-horizontal-lines.webp"
+        ],
+        "description": ""
+    },
+    {
+        "id": "sc-diagonal-grey",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "SC-Diagonal Grey",
+        "partCode": "AM00000062",
+        "images": [
+            "/static/images/AnM/diagonal-grey.webp"
+        ],
+        "description": ""
+    },
+    {
+        "id": "sc-grey-450",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "SC-Grey 450",
+        "partCode": "AM00000063",
+        "images": [
+            "/static/images/AnM/grey-450.webp"
+        ],
+        "description": ""
+    },
+    {
+        "id": "scratch-guard-transparent",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Scratch Guard-Transparent",
+        "partCode": "AM00000064",
+        "images": [
+            "/static/images/AnM/scartch1.webp",
+            "/static/images/AnM/scartch2.webp",
+            "/static/images/AnM/scartch3.webp"
+        ],
+        "description": ""
+    },
+    {
+        "id": "storage-organiser-rizta",
+        "modelId": "rizta",
+        "categoryId": "anm-accessories",
+        "name": "Storage Organiser - Rizta",
+        "partCode": "AM00000210",
+        "images": [
+            "/static/images/AnM/storage-organiser-rizta.webp",
+            "/static/images/AnM/storage-organiser-rizta1.webp",
+            "/static/images/AnM/storage-organiser-rizta2.webp"
+        ],
+        "description": ""
+    },
+    {
+        "id": "tpms-sensor-assembly",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "TPMS Sensor Assembly",
+        "partCode": "AM0809E001MNN",
+        "images": [
+            "/static/images/AnM/TPMS.webp",
+            "/static/images/AnM/TPMS2.webp",
+            "/static/images/AnM/TPMS3.webp"
+        ],
+        "description": ""
+    },
+    {
+        "id": "combi-charger-assembly",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Combi Charger Assembly",
+        "partCode": "BE5001A014MN",
+        "images": [
+            "/static/images/AnM/ather-wall-mount-assembly.webp"
+        ],
+        "description": ""
+    },
+    {
+        "id": "ather-wall-mount-assembly",
+        "modelId": "all",
+        "categoryId": "anm-accessories",
+        "name": "Ather Wall mount Assembly",
+        "partCode": "PCAM000204",
+        "images": [
+            "/static/images/AnM/ather-wall-mount-assembly2.webp",
+            "/static/images/AnM/ather-wall-mount-assembly.webp"
+        ],
+        "description": ""
+    }
+]

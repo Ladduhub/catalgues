@@ -1,0 +1,1878 @@
+//* General Body and HTML Reset */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    /* Dark background for the body */
+    color: #e0e0e0;
+    /* Light text color for general body text */
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    padding-top: 100px;
+    /* Space for the fixed header */
+}
+
+/* --- Main Fixed Header --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* Keep this for structural height if needed, but its background is often set by header-top-bar */
+    padding: 0;
+    z-index: 1000;
+    background: rgba(40, 40, 40, 0.95); /* Semi-transparent dark background */
+    backdrop-filter: blur(8px); /* Blur effect */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* More pronounced shadow on dark */
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #000000; /* Changed to black background */
+    color: #fff; /* Added white text color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.ather-logo-header {
+    width: 100px;
+    height: 60px;
+    object-fit: contain;
+    border: 2px solid #666666;
+    /* Lighter border for logo on dark background */
+    padding: 5px;
+    background-color: #333333;
+    /* Darker background for logo */
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    /* Prevent logo from shrinking */
+}
+
+.ather-logo-header:hover {
+    transform: scale(1.05);
+}
+
+.site-title {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #ffffff; /* White text for title */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.15); /* Subtle shadow for white text */
+    margin: 0 auto; /* CORRECTED: This truly centers the title using auto margins */
+    flex-grow: 1; /* Allows it to take available space */
+    text-align: center; /* Corrected: Changed 'middle' to 'center' for text alignment */
+}
+
+/* --- Search Bar Styles (Integrated into Header) --- */
+.search-bar-container {
+    width: auto;
+    max-width: 400px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 50;
+    flex-shrink: 0;
+    /* Prevent search bar from shrinking */
+}
+
+.search-form {
+    display: flex;
+    background-color: #2c2c2c;
+    /* Dark background for the search bar */
+    border-radius: 50px;
+    /* Pill shape */
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    /* Darker shadow */
+    transition: box-shadow 0.3s ease;
+    border: 1px solid #444444;
+    /* Subtle border */
+    width: 100%;
+    /* Ensure it fills its container */
+}
+
+.search-form:focus-within {
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(100, 100, 100, 0.5);
+    /* Highlight on focus */
+}
+
+#searchInput {
+    flex-grow: 1;
+    padding: 12px 20px;
+    /* Adjusted padding for better fit in header */
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #e0e0e0;
+    /* Light text color */
+    font-size: 1em;
+    /* Adjusted font size for header */
+    font-family: 'Inter', sans-serif;
+}
+
+#searchInput::placeholder {
+    color: #999999;
+    /* Lighter placeholder text */
+    opacity: 0.8;
+}
+
+.search-button {
+    background-color: #4a4a4a;
+    /* Darker button background */
+    border: none;
+    padding: 8px 15px;
+    /* Adjusted padding for better fit in header */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-top-right-radius: 50px;
+    /* Round the right end of the button to match form */
+    border-bottom-right-radius: 50px;
+}
+
+.search-button:hover {
+    background-color: #5a5a5a;
+    /* Slightly lighter on hover */
+    transform: scale(1.02);
+}
+
+.search-button svg {
+    width: 22px;
+    /* Adjusted icon size for header */
+    height: 22px;
+    fill: #ffffff;
+    /* White icon */
+    stroke: #ffffff; /* Ensure stroke is also white for line-based icons */
+}
+
+
+/* Hero Video Section */
+.hero-video-section {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    background-color: #0d0d0d;
+    /* Very dark fallback for video section */
+}
+
+.hero-video-section .video-background-in-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Changed from 'Fixed' to 'cover' for proper video scaling */
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+/* Main Content Wrapper */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Background video for the entire main area (if you have one) */
+/*
+.main-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.3) opacity(0.7);
+}
+*/
+
+/* Common Section Styling (including #mainCategoriesSection) */
+section {
+    position: relative;
+    /* CRUCIAL: Make the section a positioning context for its background video */
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: rgba(44, 44, 44, 0.8);
+    /* Semi-transparent dark background (tint/fallback over video) */
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    /* IMPORTANT: Clips the video to the section's border-radius */
+    transition: background-color 0.3s ease;
+}
+
+/* NEW: Styles for the background video within the section */
+.section-bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    /* Puts this video behind the content within the section */
+    border-radius: 12px;
+    /* Matches the section's border-radius */
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #ffffff;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+    text-shadow: none;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #6a6a6a;
+    border-radius: 2px;
+}
+
+/* Ensures content within sections is above any background video */
+.section-content {
+    position: relative;
+    /* CRUCIAL: Makes these elements stack above the video */
+    z-index: 1;
+    /* Puts content above the section-bg-video (which is z-index: 0) */
+}
+
+/* --- Main Category Grids --- */
+.category-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 50px;
+    padding: 0 20px;
+    /* Padding inside the grid */
+}
+
+.category-card {
+    background-color: rgba(58, 58, 58, 0);
+    /* Semi-transparent dark background to let grid video show through */
+    border: 1px solid rgba(74, 74, 74, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    min-height: 250px;
+    will-change: transform, opacity;
+    opacity: 0;
+    /* For GSAP animation */
+    transform: translateY(50px);
+    /* For GSAP animation */
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background-color: rgba(74, 74, 74, 0.95);
+    /* Less transparent on hover */
+}
+
+.category-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-card h3 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.category-card p {
+    font-size: 1.1em;
+    color: #cccccc;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* Back Button */
+.back-button-container {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    z-index: 1001;
+}
+
+.back-button {
+    background-color: #5a5a5a;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease, visibility 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+}
+
+.back-button:hover {
+    background-color: #6a6a6a;
+    transform: translateX(-5px);
+}
+
+.back-button svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Category and Model Grids (general styles, will be applied to .figure-item etc) */
+.model-selection-grid,
+#productsGrid,
+.sub-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0 20px;
+}
+
+.figure-item,
+/* .product-card, Removed .product-card from here as it has specific styles below */
+.product-card {
+    /* Product card styles that were previously separate are now more explicit below */
+    background-color: rgba(58, 58, 58, 0);
+    border: 1px solid rgba(74, 74, 74, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.figure-item:hover,
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background-color: rgba(74, 74, 74, 0.95);
+}
+
+.figure-item img {
+    width: 120px;
+    height: 90px;
+    /* Adjusted for better logo fit (wider than tall) */
+    object-fit: fill;
+    /* Ensures the whole logo is visible without cropping */
+    margin-bottom: 10px;
+    /* Slightly reduced margin to tighten spacing */
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.figure-item figcaption {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.figure-item p {
+    font-size: 0.95em;
+    color: #cccccc;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+/* Sub-Category Grid Container */
+.sub-category-grid {
+    margin-top: 50px;
+}
+
+/* Search Results Section */
+#searchResultsContainer {
+    margin-top: 40px;
+    padding: 40px 20px;
+    background-color: rgba(44, 44, 44, 0.8);
+    border-radius: 12px;
+}
+
+#searchResultsContainer h2 {
+    color: #ffffff;
+}
+
+#searchResultsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding-top: 20px;
+}
+
+/* Specific .product-card styling for the main content grid and search results */
+/* This rule was previously affecting other grids, now it's more focused */
+.product-card {
+    text-align: left;
+    padding: 20px;
+    /* OVERRIDE for background and text color for product cards in grids */
+    background-color: transparent;
+    /* Changed from #fff to transparent */
+    color: #e0e0e0;
+    /* Adjusted text color for readability */
+    border: 1px solid rgba(74, 74, 74, 0.7);
+    /* Maintain border */
+    border-radius: 0%;
+    /* Maintain border radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Maintain shadow */
+    display: flex;
+    /* Ensure flex properties if needed */
+    flex-direction: column;
+    align-items: center;
+    /* Center items visually in card */
+    justify-content: flex-start;
+    /* New styles for image wrapper and info */
+}
+
+/* Specific styles for elements INSIDE .product-card */
+.product-image-wrapper {
+    width: 100%;
+    padding-bottom: 75%;
+    /* 4:3 Aspect Ratio */
+    position: relative;
+    background-color: #3a3a3a;
+    overflow: hidden;
+    border-radius: 8px;
+    /* Match card border radius */
+}
+
+.product-grid-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.7s ease;
+}
+
+.product-card:hover .product-grid-image {
+    transform: scale(3);
+}
+
+.product-info {
+    padding: 15px 5px 5px;
+    /* Adjust padding around text */
+    text-align: center;
+    width: 100%;
+    /* Take full width */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card h3 {
+    /* Renamed to product-name in JS but keep for safety, or update HTML */
+    font-size: 1.35em;
+    /* Adjusted size */
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 5px;
+    /* Less margin */
+    color: #00e676;
+    /* Ather green */
+}
+
+.product-card p {
+    /* Generic p, specific part-code below */
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #ccc;
+    /* Lighter color for general text */
+    margin-top: 5px;
+}
+
+.product-card .product-part-code {
+    /* Specific for part code */
+    font-size: 0.9em;
+    color: #999999;
+    margin-top: 0;
+    /* Align with new structure */
+    margin-bottom: 0;
+}
+
+
+/* About Section */
+.about-section {
+    text-align: center;
+    padding: 80px 40px;
+    background-color:
+        margin-top: 60px;
+    margin-bottom: 60px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.about-section h2 {
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cccccc;
+}
+
+/* Footer Styles - Expanded */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #0a0a0a;
+    color: #cccccc;
+    font-size: 0.9rem;
+    border-top: 1px solid #333333;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.footer-column h3 {
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #666666;
+}
+
+.footer-column p,
+.footer-column ul {
+    font-size: 0.95em;
+    color: #b0b0b0;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    background-color: #555555;
+    transform: translateY(-3px);
+}
+
+.social-links img {
+    width: 18px;
+    height: 18px;
+    filter: invert(100%);
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    border-top: 1px solid #222222;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    color: #999999;
+    font-size: 0.85em;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.footer-bottom a {
+    color: #999999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #cccccc;
+    text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #2c2c2c;
+    padding: 40px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+    max-height: 90vh;
+    transform: translateY(20px);
+    opacity: 0;
+    color: #e0e0e0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #bbbbbb;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+#modalLoading {
+    color: #e0e0e0;
+    font-size: 1.2em;
+}
+
+#modelDetailsContainer img {
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+    object-fit: cover;
+    max-width: 200px;
+    height: auto;
+    border: 2px solid #666666;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#modalTitle {
+    color: #ffffff;
+    font-size: 2.2em;
+}
+
+#modalDescription {
+    color: #cccccc;
+    font-size: 1.1em;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.modal button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-back-button {
+    background-color: #5a5a5a;
+    color: white;
+}
+
+.modal-back-button:hover {
+    background-color: #6a6a6a;
+}
+
+#viewProductsBtn {
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.4);
+}
+
+#viewProductsBtn:hover {
+    background-color: #218838;
+}
+
+/* Product Detail Carousel */
+.image-carousel {
+    background-color: #3a3a3a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #4a4a4a;
+}
+
+#mainProductImage {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #666666;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.thumbnail-nav img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.thumbnail-nav img:hover {
+    transform: scale(1.05);
+}
+
+.thumbnail-nav img.active-thumbnail {
+    border-color: #888888;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 15px;
+}
+
+.carousel-controls button {
+    background-color: #5a5a5a;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-controls button:hover {
+    background-color: #6a6a6a;
+    transform: scale(1.05);
+}
+
+/* Fullscreen Overlay */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fullscreen-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fullscreen-overlay.show .fullscreen-image {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.fullscreen-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fullscreen-close:hover {
+    color: #dddddd;
+    transform: rotate(180deg);
+}
+
+.fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.fullscreen-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.fullscreen-prev-btn {
+    left: 20px;
+}
+
+.fullscreen-next-btn {
+    right: 20px;
+}
+
+.fullscreen-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Hidden Utility Class (managed by JS) */
+.hidden {
+    display: none !important;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .main-header {
+        height: 200px;
+    }
+
+    body {
+        padding-top: 90px;
+    }
+
+    .header-top-bar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px 0 60px;
+        /* MODIFIED: Increased right padding here */
+        height: 100%;
+        gap: 20px;
+    }
+
+    .ather-logo-header {
+        width: 55px;
+        height: 55px;
+    }
+
+    .site-title {
+        font-size: 1.9em;
+    }
+
+    .search-bar-container {
+        max-width: 350px;
+    }
+
+    #searchInput {
+        padding: 10px 10px;
+        font-size: 0.95em;
+    }
+
+    .search-button {
+        padding: 7px 7px;
+    }
+
+    .search-button svg {
+        width: 10px;
+        height: 20px;
+    }
+
+    section h2 {
+        font-size: 2.2em;
+    }
+
+    .category-main-grid {
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 0 15px;
+    }
+
+    .category-card {
+        padding: 25px;
+    }
+
+    .category-card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .category-card h3 {
+        font-size: 1.6em;
+    }
+
+    .figure-item,
+    .product-card {
+        padding: 20px;
+    }
+
+    .figure-item img {
+        width: 100px;
+        height: 75px;
+        /* Corrected typo and adjusted for logo fit */
+    }
+
+    .figure-item figcaption {
+        font-size: 1.1em;
+    }
+
+    .modal-content {
+        max-width: 700px;
+    }
+
+    .back-button-container {
+        top: 100px;
+    }
+
+    .sub-category-grid {
+        gap: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    body {
+        padding-top: 140px;
+        /* Adjusted padding to account for taller stacked header */
+    }
+
+    .header-top-bar {
+        flex-direction: column;
+        /* Stack all three items vertically */
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        /* Space between stacked items */
+        padding: 0 20px;
+        /* Kept existing padding for column layout */
+        height: auto;
+    }
+
+    .ather-logo-header {
+        width: 50px;
+        height: 50px;
+    }
+
+    .site-title {
+        font-size: 1.7em;
+        margin: 0;
+        /* Remove auto margins when stacked */
+        text-align: center;
+        /* Ensure it stays centered */
+        flex-grow: 0;
+        /* Don't grow when stacked */
+    }
+
+    .search-bar-container {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    #searchInput {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .search-button {
+        padding: 6px 12px;
+    }
+
+    .search-button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .hero-video-section {
+        height: 60vh;
+    }
+
+    section {
+        padding: 40px 15px;
+        margin: 30px auto;
+    }
+
+    section h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .category-main-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .category-card {
+        padding: 20px;
+    }
+
+    .category-card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .category-card h3 {
+        font-size: 1.4em;
+    }
+
+    .category-card p {
+        font-size: 1em;
+    }
+
+    .back-button-container {
+        top: 155px;
+        /* Adjusted based on new taller stacked header in mobile */
+        left: 10px;
+    }
+
+    .back-button {
+        width: 35px;
+        height: 35px;
+    }
+
+    .back-button svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .figure-item,
+    .product-card {
+        padding: 15px;
+    }
+
+    .figure-item img {
+        width: 80px;
+        height: 60px;
+        /* Adjusted for logo fit */
+    }
+
+    .figure-item figcaption {
+        font-size: 1.1em;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 30px;
+        max-height: 85vh;
+    }
+
+    .close-button {
+        font-size: 30px;
+        right: 20px;
+    }
+
+    #modalTitle {
+        font-size: 1.8em;
+    }
+
+    #modalDescription {
+        font-size: 1em;
+    }
+
+    #productsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        max-width: 100%;
+        height: 150px;
+    }
+
+    .thumbnail-nav img {
+        width: 60px;
+        height: 45px;
+    }
+
+    .carousel-controls button {
+        padding: 6px 12px;
+        font-size: 1.2em;
+        width: 35px;
+        height: 35px;
+    }
+
+    .fullscreen-close {
+        font-size: 40px;
+        right: 20px;
+    }
+
+    .fullscreen-nav-btn {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+
+    .fullscreen-prev-btn {
+        left: 10px;
+    }
+
+    .fullscreen-next-btn {
+        right: 10px;
+    }
+
+    .sub-category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+    }
+
+    /* Responsive adjustments for footer */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        min-width: unset;
+        width: 100%;
+        text-align: center;
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    body {
+        padding-top: 130px;
+        /* Adjusted padding for smaller header */
+    }
+
+    .ather-logo-header {
+        width: 40px;
+        height: 40px;
+    }
+
+    .site-title {
+        font-size: 1.5em;
+    }
+
+    .hero-video-section {
+        height: 50vh;
+        margin-bottom: 30px;
+    }
+
+    section {
+        padding: 30px 10px;
+        margin: 20px auto;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    section h2::after {
+        width: 60px;
+        height: 3px;
+    }
+
+    .category-main-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 5px;
+    }
+
+    .category-card {
+        padding: 15px;
+        min-height: unset;
+    }
+
+    .category-card img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .category-card h3 {
+        font-size: 1.3em;
+    }
+
+    .category-card p {
+        font-size: 0.9em;
+    }
+
+    .back-button-container {
+        top: 140px;
+        /* Adjusted for smaller header height */
+        left: 5px;
+    }
+
+    .back-button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .back-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .figure-item,
+    .product-card {
+        padding: 15px;
+    }
+
+    .figure-item img {
+        width: 70px;
+        height: 50px;
+        /* Adjusted for logo fit */
+    }
+
+    .figure-item figcaption {
+        font-size: 1em;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    #modalTitle {
+        font-size: 1.6em;
+    }
+
+    #modalDescription {
+        font-size: 0.9em;
+    }
+
+    #productsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        max-width: 100%;
+        height: 150px;
+    }
+
+    .thumbnail-nav img {
+        width: 60px;
+        height: 45px;
+    }
+
+    .carousel-controls button {
+        padding: 6px 12px;
+        font-size: 1.2em;
+        width: 35px;
+        height: 35px;
+    }
+
+    .fullscreen-close {
+        font-size: 40px;
+        right: 20px;
+    }
+
+    .fullscreen-nav-btn {
+        padding: 10px 15px;
+        font-size: 1.5em;
+    }
+
+    .fullscreen-prev-btn {
+        left: 10px;
+    }
+
+    .fullscreen-next-btn {
+        right: 10px;
+    }
+
+    .sub-category-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    /* Space above tabs */
+    margin-bottom: 20px;
+    /* Space below tabs */
+    gap: 10px;
+    /* Space between buttons */
+    flex-wrap: wrap;
+    /* Allow buttons to wrap on smaller screens */
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    background-color: #f0f0f0;
+    /* Lighter background for inactive tabs */
+    color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    flex-shrink: 0;
+    /* Prevent buttons from shrinking too much */
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    /* Blue background for active tab */
+    color: #fff;
+    /* White text for active tab */
+    border-color: #007bff;
+}
+
+.tab-button:hover:not(.active) {
+    background-color: #e6f2ff;
+    /* Light blue hover for inactive tabs */
+}
+
+/* Styles for the product sections (Helmets, Merch) */
+/* Styles for the product sections (Helmets, Merch) */
+.product-grid-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* Responsive card columns */
+    gap: 15px;
+    margin-top: 15px;
+    /* Space below tab buttons */
+    padding: 10px;
+    /* Some padding inside the section */
+    background-color: red;
+    /* Changed to fully transparent */
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    /* You might want to adjust or remove this shadow for a fully transparent look */
+}
+
+
+/* Class to hide content */
+.hidden {
+    display: none !important;
+    /* Use !important to ensure it overrides other display properties */
+}
+
+/* Updated product-card styling for transparent background and light text */
+.product-card {
+    /* Existing product-card styles (some adjusted) */
+    /* text-align: left; - This was on a generic .product-card, now specific styles below */
+    padding: 20px;
+    /* Kept this padding */
+    border: 1px solid rgba(74, 74, 74, 0.7);
+    /* Adjusted border for dark theme */
+    border-radius: 8px;
+    /* Consistent border-radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Consistent shadow */
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    /* Ensure flex properties for internal layout */
+    flex-direction: column;
+    align-items: center;
+    /* Center items visually in card */
+    justify-content: flex-start;
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateY(50px);
+
+    /* OVERRIDE for background and text color for product cards in grids */
+    background-color: rgba(0, 0, 0, 0);
+    /* CHANGED: From #fff to transparent */
+    color: #e0e0e0;
+    /* CHANGED: Adjusted text color for better visibility on a dark/transparent background */
+    text-align: center;
+    /* Explicitly center content within the card */
+}
+
+/* Re-added product-card hover state since it was generalized */
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background-color: rgba(74, 74, 74, 0.95);
+    /* Consistent hover background */
+}
+
+
+/* Specific styles for elements INSIDE .product-card to ensure desired layout and appearance */
+.product-image-wrapper {
+    width: 100%;
+    padding-bottom: 75%;
+    /* 4:3 Aspect Ratio for images */
+    position: relative;
+    background-color: #3a3a3a;
+    /* Placeholder/loading background */
+    overflow: hidden;
+    border-radius: 8px;
+    /* Match card border radius */
+}
+
+.product-grid-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover the entire area without distorting */
+    object-position: center;
+    /* Center the image */
+    border-radius: 8px;
+    /* Match wrapper radius */
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-grid-image {
+    transform: scale(1.05);
+    /* Slightly zoom in image on hover */
+}
+
+.product-info {
+    padding: 15px 5px 5px;
+    /* Padding around text content */
+    text-align: center;
+    width: 100%;
+    /* Take full width */
+    flex-grow: 1;
+    /* Allow info section to grow */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Push part code to bottom if space allows */
+}
+
+.product-card h3.product-name {
+    /* Target specific h3 for product name */
+    font-size: 1.35em;
+    /* Adjusted size */
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 5px;
+    /* Less margin */
+    color: #00e676;
+    /* Ather green for product names */
+}
+
+.product-card p.product-description {
+    /* For generic product description if used */
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #cccccc;
+    /* General light text color */
+    margin-top: 5px;
+}
+
+.product-card p.product-part-code {
+    /* Specific for part code */
+    font-size: 0.9em;
+    color: #999999;
+    /* Slightly muted color for part code */
+    margin-top: 0;
+    /* Align with new structure */
+    margin-bottom: 0;
+}
+
+/* Original .product-card img, h3, p rules are now replaced by more specific ones above */
+/* Removed or combined:
+.product-card img { ... }
+.product-card h3 { ... }
+.product-card p { ... }
+.product-card .part-code { ... }
+*/
+/* --- Global Header Styles (re-apply or ensure they exist) --- */
+.header-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* Needed if you position menu absolutely */
+    z-index: 100;
+    /* Ensure header is on top */
+}
+
+.ather-logo-header {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.site-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #333;
+    margin-right: auto;
+    /* Pushes the title and subsequent elements right */
+}
+
+.search-and-add-wrapper {
+    margin-left: auto;
+    /* Pushes search to far right */
+}
+
+/* --- Hamburger Icon Styles (always hidden by default) --- */
+.hamburger-menu {
+    display: none;
+    /* Hidden by default, only visible on small screens */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 101;
+    /* Above other header elements */
+    margin-left: 20px;
+    /* Space from title */
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Main Navigation Styles --- */
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* Default: horizontal for desktop */
+    gap: 30px;
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: #555;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav li a:hover {
+    color: #007bff;
+}
+
+/* --- Responsive Design with Media Queries --- */
+
+/* For screens smaller than, say, 900px (adjust this breakpoint as needed) */
+@media (max-width: 900px) {
+
+    /* Hide the full navigation menu */
+    .main-nav-wrapper {
+        display: none;
+        /* Hide the entire navigation container */
+        flex-direction: column;
+        /* Stack menu items vertically when shown */
+        width: 100%;
+        /* Take full width when open */
+        position: absolute;
+        /* Position it relative to the header */
+        top: 100%;
+        /* Place it right below the header */
+        left: 0;
+        background-color: #fff;
+        /* Background for the mobile menu */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        z-index: 99;
+        /* Below the header but above other content */
+        /* Animation properties */
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+
+    /* Show the main-nav-wrapper when .main-nav-wrapper.open class is added by JS */
+    .main-nav-wrapper.open {
+        display: block;
+        /* Or flex if you prefer flex-direction: column; for items */
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Show the hamburger icon */
+    .hamburger-menu {
+        display: block;
+        /* Make the hamburger visible */
+    }
+
+    /* Adjust the site title margin if needed to accommodate the hamburger */
+    .site-title {
+        margin-right: 0;
+        /* Remove auto-margin if the hamburger is also on the right */
+        /* You might need to use justify-content: flex-start; and specific margins */
+        /* to arrange logo, title, hamburger, and search bar how you like on mobile */
+    }
+
+    /* Mobile specific styles for the navigation list */
+    .main-nav ul {
+        flex-direction: column;
+        /* Stack items vertically */
+        gap: 15px;
+        /* Adjust vertical spacing */
+        text-align: center;
+        /* Center align menu items */
+    }
+
+    .main-nav li a {
+        padding: 10px 0;
+        /* More vertical padding for tap targets */
+        font-size: 1.2rem;
+        display: block;
+        /* Make entire area clickable */
+    }
+
+    /* Animation for the hamburger bars when active */
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+        /* Middle bar disappears */
+    }
+
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        /* Top bar rotates to form 'X' */
+    }
+
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        /* Bottom bar rotates to form 'X' */
+    }
+
+    /* Adjust search bar position if it conflicts */
+    .search-and-add-wrapper {
+        /* On mobile, you might want to hide the search bar initially or move it */
+        /* For this example, let's keep it, but it might need more specific handling */
+        margin-left: 20px;
+        /* Adjust margin if needed */
+    }
+}
+
+/* Adjustments for the specific category card that will contain the tabs */
+.category-card#anm-helmets-merchandise-card {
+    display: flex;
+    flex-direction: column;
+    /* Stack header, tabs, and content vertically */
+    justify-content: flex-start;
+    /* Align content to the top */
+    min-height: auto;
+    /* Allow height to adjust to content */
+    padding-bottom: 20px;
+    /* Add some bottom padding */
+}
+.add-product-button {
+    background-color: #000000; /* Black background for the button */
+    color: #ffffff; /* White text for contrast on black */
+    border: 1px solid #333333; /* A subtle dark grey border to define the button's edge */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow for visibility on dark */
+}
+
+.add-product-button:hover {
+    background-color: #1a1a1a; /* Very dark grey on hover, subtly different from pure black */
+    border-color: #555555; /* Lighter border on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.add-product-button:active {
+    background-color: #333333; /* Darker grey on click */
+    border-color: #666666; /* Even lighter border on click */
+    transform: translateY(0); /* Reset lift on click */
+}
