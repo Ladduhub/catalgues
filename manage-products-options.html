@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}">
+</head>
+<body class="form-page">
+    <button class="small-back-arrow" onclick="window.location.href = '{{ url_for('index') }}'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3647L8 12.0007L15.7782 7.05093L10.8284 12.0007Z"></path>
+        </svg>
+    </button>
+    <div class="container">
+        <h1>Product Management Options</h1>
+        <a href="{{ url_for('add_product_form') }}" class="option-button add">Add New Product</a>
+        <a href="{{ url_for('delete_product_page') }}" class="option-button manage">Manage/Delete Existing Products</a>
+    </div>
+</body>
+</html>

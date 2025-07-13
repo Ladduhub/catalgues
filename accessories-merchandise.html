@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ather Energy - Accessories & Merchandise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="index-url" content="{{ url_for('index') }}">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" href="static/images/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+	<div class="back-button-container">
+            <button id="backButton" class="back-button" data-redirect="index.html" aria-label="Back to Main Categories">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3647L8 12.0007L14.364 5.63672L15.7782 7.05093L10.8284 12.0007Z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+    <video class="section-bg-video" autoplay loop muted playsinline src="static/videos/halo.mp4"></video>
+    <header class="main-header">
+        <div class="header-top-bar">
+            <img src="static/images/Atherlogo.jpg" alt="Ather Logo" class="ather-logo-header">
+            <h1 class="site-title">Accessories & Merchandise</h1>
+            <div class="search-bar-container">
+                <form class="search-form" action="#" method="get">
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                    <button type="submit" class="search-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 4.796l4.397 4.398a.75.75 0 1 1-1.06 1.06l-4.398-4.397A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </form>
+               </div>
+            
+        </div>
+    </header>
+<body data-category="accessories-merchandise">
+    <main class="main-content">
+	 <div id="searchResultsContainer" class="search-results-container ">
+                    <div id="searchResultsGrid" class="search-results-grid"></div>
+                    <p id="noResultsMessage" class="no-results-message hidden">No products found matching your search.</p>
+                </div>
+
+        <section id="productsSection" class="product-section">
+            <h2 id="productsSectionTitle" class="section-title">Accessories & Merchandise</h2>
+	
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="anm-all">ALL</button>
+                <button class="filter-btn" data-filter="anm-accessories">ACCESSORIES</button>
+                <button class="filter-btn" data-filter="anm-others">MERCHANDISE</button>
+                <button class="filter-btn" data-filter="anm-helmet">HELMETS</button>
+                </div>
+
+            <div id="productsGrid" class="product-grid">
+                </div>
+            <p id="noProductsMessage" class="no-products-message hidden">No products available in this category.</p>
+        </section>
+
+        <div id="mainModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeModal">&times;</span>
+                <div id="modalLoading" class="modal-loading hidden">Loading...</div>
+                <div id="productDetailContainer" class="product-detail-container hidden">
+                    <h3 id="productDetailName"></h3>
+                    <p id="productDetailPartCode"></p>
+                    <div class="product-image-gallery">
+                        <img id="mainProductImage" src="" alt="Product Image">
+                        <div class="thumbnail-nav" id="thumbnailNav">
+                        </div>
+                        <div class="carousel-controls">
+                            <button id="prevImageBtn">&lt;</button>
+                            <button id="nextImageBtn">&gt;</button>
+                        </div>
+                    </div>
+                    <p id="productDetailDescription">Detailed description of the product...</p>
+                    <button id="backToProductListBtn" class="modal-back-button">Back to All Accessories</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="fullscreenOverlay" class="fullscreen-overlay">
+        <span class="fullscreen-close" id="closeFullscreen">&times;</span>
+        <img id="fullscreenImage" class="fullscreen-image" src="" alt="Fullscreen Image">
+        <button id="fullscreenPrevBtn" class="fullscreen-nav-btn fullscreen-prev-btn">&lt;</button>
+        <button id="fullscreenNextBtn" class="fullscreen-nav-btn fullscreen-next-btn">&gt;</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="static/script-subpage.js"></script>
+   
+</body>
+
+</html>

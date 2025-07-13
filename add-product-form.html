@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
+   <link rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}">
+</head>
+<body class="form-page">
+    <button class="small-back-arrow" onclick="window.location.href = '{{ url_for('manage_products_options') }}'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3647L8 12.0007L15.7782 7.05093L10.8284 12.0007Z"></path>
+        </svg>
+    </button>
+    <div class="form-container">
+        <h1>Add New Product</h1>
+        <form id="addProductForm">
+            <div class="form-group">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="partCode">Part Code:</label>
+                <input type="text" id="partCode" name="partCode" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="images">Product Images:</label>
+                <input type="file" id="images" name="images" accept="image/*" multiple required>
+                <p class="file-note">You can select multiple images.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Main Category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="accessories-merchandise.html">Accessories & Merchandise</option>
+                    <option value="spares.html">Spares</option>
+                    <option value="charging-infrastructure.html">Charging Infrastructure</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="subCategoryGroup">
+                <label for="subCategory">Sub Category:</label>
+                <select id="subCategory" name="categoryId" required>
+                    <option value="">Select a sub-category</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-button">Add Product</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const categorySelect = document.getElementById('category');
+            const subCategoryGroup = document.getElementById('subCategoryGroup');
+            const subCategorySelect = document.getElementById('subCategory');
+            const addProductForm = document.getElementById('addProductForm');
+
+            const categoryOptions = {
+                'accessories-merchandise.html': [
+                    { value: 'anm-accessories', text: 'Accessories' },
+                    { value: 'anm-helmet', text: 'Helmets' },
+                    { value: 'anm-others', text: 'Merchandise' },
+                    { value: 'anm-all', text: 'All Accessories & Merchandise' }
+                ],
+                'spares.html': [
+                    { value: 'spares-battery', text: 'Battery Spares' },
+                    { value: 'spares-frame', text: 'Frame Spares' },
+                    { value: 'spares-motor', text: 'Motor Spares' },
+                    { value: 'spares-brake', text: 'Brake Spares' },
+                    { value: 'spares-tire', text: 'Tire Spares' },
+                    { value: 'spares-all', text: 'All Spares' }
+                ],
+                'charging-infrastructure.html': [
+                    { value: 'charging-public', text: 'Public Chargers' },
+                    { value: 'charging-home', text: 'Home Chargers' },
+                    { value: 'charging-fast', text: 'Fast Chargers' },
+                    { value: 'charging-all', text: 'All Charging Infrastructure' }
+                ]
+            };
+
+            function updateSubCategoryOptions() {
+                const selectedCategoryPage = categorySelect.value;
+                const options = categoryOptions[selectedCategoryPage] || [];
+
+                subCategorySelect.innerHTML = '<option value="">Select a sub-category</option>';
+                if (options.length > 0) {
+                    options.forEach(option => {
+                        const optElement = document.createElement('option');
+                        optElement.value = option.value;
+                        optElement.textContent = option.text;
+                        subCategorySelect.appendChild(optElement);
+                    });
+                    subCategoryGroup.style.display = 'block';
+                    subCategorySelect.setAttribute('required', 'required');
+                } else {
+                    subCategoryGroup.style.display = 'none';
+                    subCategorySelect.removeAttribute('required');
+                }
+            }
+
+            categorySelect.addEventListener('change', updateSubCategoryOptions);
+
+            addProductForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const formData = new FormData();
+                formData.append('name', document.getElementById('productName').value);
+                formData.append('partCode', document.getElementById('partCode').value);
+                formData.append('description', document.getElementById('description').value);
+                formData.append('categoryId', document.getElementById('subCategory').value);
+                formData.append('modelId', 'all'); // Hardcoded as before
+
+                const images = document.getElementById('images').files;
+                for (let i = 0; i < images.length; i++) {
+                    formData.append('images', images[i]);
+                }
+
+                try {
+                    const response = await fetch('/api/products', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Failed to add product');
+                    }
+                    const data = await response.json();
+                    alert(data.message);
+                    this.reset(); // Clear the form
+                    updateSubCategoryOptions(); // Reset sub-category visibility
+
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert('An error occurred while adding the product: ' + error.message);
+                }
+            });
+
+            updateSubCategoryOptions();
+        });
+    </script>
+</body>
+</html>

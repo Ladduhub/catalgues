@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non Scooter Business</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/Atherlogo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='indexstyle.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-top-bar">
+            <img src="{{ url_for('static', filename='images/Atherlogo.png') }}" alt="Ather Logo" class="ather-logo-header">
+
+            <h1 class="site-title">Non Scooter Business</h1>
+
+            
+                <button class="add-product-button" onclick="window.location.href = '{{ url_for('manage_products_options') }}'">
+                    Manage Product
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="back-button-container hidden">
+        <button class="back-button" onclick="goBack()">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+
+    <section class="hero-video-section">
+        <video class="video-background-in-section" autoplay loop muted playsinline>
+            <source src="{{ url_for('static', filename='videos/factory.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <main>
+        <section id="mainCategoriesSection">
+            <video class="section-bg-video" autoplay loop muted playsinline>
+                <source src="{{ url_for('static', filename='videos/Background.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <h2 class="section-content">Explore Our Categories</h2>
+
+            <div class="category-main-grid section-content">
+                <div class="category-card" data-category="spares" data-page="spares.html">
+                    <img src="{{ url_for('static', filename='images/sparesicon.jpg') }}" alt="Spares Icon">
+                    <h3>Spares</h3>
+                    <p>Find genuine replacement parts and components for your Ather scooter.</p>
+                </div>
+                <div class="category-card" data-category="accessories-merchandise"
+                    data-page="accessories-merchandise.html">
+                    <img src="{{ url_for('static', filename='images/AnMicon.jpg') }}" alt="Accessories & Merchandise Icon">
+                    <h3>Accessories & Merchandise</h3>
+                    <p>Enhance your ride with official accessories and showcase your Ather pride with merchandise.</p>
+                </div>
+                <div class="category-card" data-category="charging-infrastructure"
+                    data-page="charging-infrastructure.html">
+                    <img src="{{ url_for('static', filename='images/chargericon.jpg') }}" alt="Charging Infrastructure Icon">
+                    <h3>Charging Infrastructure</h3>
+                    <p>Discover home charging solutions and locate public charging points for your convenience.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="dynamicContentSection" class="hidden">
+            <h2 id="dynamicSectionTitle"></h2>
+            <div id="subCategoryGrid" class="sub-category-grid"></div>
+            <div id="modelSelectionGrid" class="model-selection-grid"></div>
+            <div id="productsGrid" class="products-grid"></div>
+        </section>
+
+        <section id="searchResultsContainer" class="hidden">
+            <h2>Search Results</h2>
+            <div id="searchResultsGrid">
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>About Ather Energy</h2>
+            <p>Ather Energy is a pioneering Indian electric vehicle manufacturer, founded in 2013. We are committed to
+                designing and building intelligent electric scooters and a robust public charging infrastructure (Ather
+                Grid) to accelerate the adoption of electric vehicles in India. Our mission is to transform urban
+                commute with sustainable and high-performance mobility solutions.</p>
+            <p>Our flagship products, the Ather 450X and 450S, are known for their cutting-edge technology, superior
+                performance, and connected features, offering a seamless and exhilarating riding experience. We believe
+                in an ecosystem approach, providing comprehensive solutions from vehicle to charging to ownership
+                experience.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column about-ather">
+                <h3>About Ather Energy</h3>
+                <p>Pioneering India's electric revolution with smart, high-performance electric scooters and a robust
+                    charging ecosystem. Our commitment is to sustainable and integrated mobility solutions.</p>
+            </div>
+
+            <div class="footer-column quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="spares.html">Spares</a></li>
+                    <li><a href="accessories-merchandise.html">Accessories & Merchandise</a></li>
+                    <li><a href="charging-infrastructure.html">Charging Infrastructure</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column contact-info">
+                <h3>Contact Us</h3>
+                <p><strong>Registered Office:</strong><br>
+                    3rd Floor Tower D, IBC Knowledge Park,<br>
+                    #4/1, Bannerghatta Main Road,<br>
+                    Bangalore, 560029, Karnataka, India</p>
+                <p><strong>Phone:</strong> +91 80 6646 5757</p>
+                <p><strong>Email:</strong> info@atherenergy.com</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/atherenergy/" aria-label="Facebook"><img src="{{ url_for('static', filename='images/fblogo.jpg') }}"
+                                alt="Facebook"></a>
+                    <a href="https://twitter.com/atherenergy" aria-label="Twitter"><img src="{{ url_for('static', filename='images/twitterlogo.jpg') }}"
+                                alt="Twitter"></a>
+                    <a href="https://www.instagram.com/atherenergy/" aria-label="Instagram"><img
+                                src="{{ url_for('static', filename='images/instalogo.jpg') }}" alt="Instagram"></a>
+                    <a href="https://www.youtube.com/user/atherenergy" aria-label="YouTube"><img
+                                src="{{ url_for('static', filename='images/youtubelogo.jpg') }}" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="currentYear"></span> Ather Energy Ltd. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Cookie Policy</a></p>
+        </div>
+    </footer>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <div id="modalLoading">Loading...</div>
+            <div id="modelDetailsContainer" class="hidden">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+
+                <div class="image-carousel">
+                    <img id="mainProductImage" src="" alt="Main Product Image">
+                    <div class="thumbnail-nav" id="thumbnailNav">
+                    </div>
+                    <div class="carousel-controls">
+                        <button id="prevImageBtn"><svg viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></button>
+                        <button id="nextImageBtn"><svg viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></button>
+                    </div>
+                </div>
+
+                <div id="modalProductDetails">
+                </div>
+
+                <button class="modal-back-button" onclick="showCategoryList()">Back to Categories</button>
+            </div>
+        </div>
+    </div>
+    <div id="fullscreenOverlay" class="fullscreen-overlay">
+        <span class="fullscreen-close">×</span>
+        <img id="fullscreenImage" src="" alt="Full Screen Image" class="fullscreen-image">
+        <button id="fullscreenPrevBtn" class="fullscreen-nav-btn fullscreen-prev-btn"><svg viewBox="0 0 24 24"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg></button>
+        <button id="fullscreenNextBtn" class="fullscreen-nav-btn fullscreen-next-btn"><svg viewBox="0 0 24 24"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg></button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}">
+</head>
+<body class="form-page">
+    <button class="small-back-arrow" onclick="window.location.href = '{{ url_for('manage_products_options') }}'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10.8284 12.0007L15.7782 16.9504L14.364 18.3647L8 12.0007L15.7782 7.05093L10.8284 12.0007Z"></path>
+        </svg>
+    </button>
+    <div class="container">
+        <h1>Delete Product</h1>
+
+        <div class="form-group">
+            <label for="productSelect">Select Product to Delete (by Name):</label>
+            <select id="productSelect">
+                <option value="">Loading products...</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="productCodeSearch">Or Enter Product Part Code:</label>
+            <input type="text" id="productCodeSearch" placeholder="Enter Part Code">
+        </div>
+
+        <div id="productDetails" style="display: none;">
+            <h3>Selected Product Details:</h3>
+            <p><strong>Name:</strong> <span id="detailName"></span></p>
+            <p><strong>Part Code:</strong> <span id="detailPartCode"></span></p>
+            <p><strong>Description:</strong> <span id="detailDescription"></span></p>
+            <p><strong>Category ID:</strong> <span id="detailCategoryId"></span></p>
+            <button id="confirmDeleteButton" class="delete-button" disabled>Confirm Delete</button>
+        </div>
+
+        <p id="loadingProducts">Loading products for selection...</p>
+        <p id="noProductsFound" style="display: none; color: #dc3545;">No products found to delete.</p>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productSelect = document.getElementById('productSelect');
+            const productCodeSearch = document.getElementById('productCodeSearch');
+            const productDetails = document.getElementById('productDetails');
+            const detailName = document.getElementById('detailName');
+            const detailPartCode = document.getElementById('detailPartCode');
+            const detailDescription = document.getElementById('detailDescription');
+            const detailCategoryId = document.getElementById('detailCategoryId');
+            const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+            const loadingProductsMessage = document.getElementById('loadingProducts');
+            const noProductsFoundMessage = document.getElementById('noProductsFound');
+
+            let allProducts = []; // Store all products fetched from API
+
+            async function fetchProducts() {
+                loadingProductsMessage.style.display = 'block';
+                productSelect.innerHTML = '<option value="">Loading products...</option>';
+                productSelect.disabled = true;
+                noProductsFoundMessage.style.display = 'none';
+                productDetails.style.display = 'none';
+                confirmDeleteButton.disabled = true;
+
+                try {
+                    const response = await fetch('/api/products');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    allProducts = await response.json();
+
+                    productSelect.innerHTML = '<option value="">-- Select a Product --</option>';
+                    if (allProducts.length === 0) {
+                        noProductsFoundMessage.style.display = 'block';
+                    } else {
+                        allProducts.forEach(product => {
+                            const option = document.createElement('option');
+                            option.value = product.id; // Use product ID as value
+                            option.textContent = `${product.name} (Part Code: ${product.partCode})`;
+                            productSelect.appendChild(option);
+                        });
+                        productSelect.disabled = false;
+                    }
+                } catch (error) {
+                    console.error('Error fetching products:', error);
+                    productSelect.innerHTML = '<option value="">Error loading products</option>';
+                    alert('Failed to load products: ' + error.message);
+                } finally {
+                    loadingProductsMessage.style.display = 'none';
+                }
+            }
+
+            function displayProductDetails(product) {
+                if (product) {
+                    detailName.textContent = product.name;
+                    detailPartCode.textContent = product.partCode;
+                    detailDescription.textContent = product.description;
+                    detailCategoryId.textContent = product.categoryId;
+                    productDetails.style.display = 'block';
+                    confirmDeleteButton.dataset.productId = product.id; // Store ID for deletion
+                    confirmDeleteButton.dataset.productName = product.name; // Store name for confirmation
+                    confirmDeleteButton.disabled = false;
+                } else {
+                    productDetails.style.display = 'none';
+                    confirmDeleteButton.disabled = true;
+                }
+            }
+
+            // Event listener for dropdown selection
+            productSelect.addEventListener('change', () => {
+                const selectedProductId = productSelect.value;
+                const selectedProduct = allProducts.find(p => p.id === selectedProductId);
+                displayProductDetails(selectedProduct);
+                productCodeSearch.value = ''; // Clear search field
+            });
+
+            // Event listener for part code search
+            productCodeSearch.addEventListener('input', () => {
+                const searchCode = productCodeSearch.value.trim().toLowerCase();
+                const foundProduct = allProducts.find(p => p.partCode.toLowerCase() === searchCode);
+
+                if (foundProduct) {
+                    // Update dropdown to show the found product selected
+                    productSelect.value = foundProduct.id;
+                    displayProductDetails(foundProduct);
+                } else {
+                    // Reset dropdown if no product found
+                    productSelect.value = "";
+                    displayProductDetails(null);
+                }
+            });
+
+            // Event listener for Confirm Delete button
+            confirmDeleteButton.addEventListener('click', async () => {
+                const productId = confirmDeleteButton.dataset.productId;
+                const productName = confirmDeleteButton.dataset.productName;
+
+                if (!productId) {
+                    alert('No product selected for deletion.');
+                    return;
+                }
+
+                const confirmAction = confirm(`Are you sure you want to delete product "${productName}" (ID: ${productId})? This action cannot be undone.`);
+
+                if (confirmAction) {
+                    try {
+                        const response = await fetch(`/api/products/${productId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
+                        });
+
+                        if (response.ok) {
+                            const result = await response.json();
+                            alert(result.message);
+                            // Refresh the list after deletion
+                            fetchProducts();
+                            displayProductDetails(null); // Hide details after deletion
+                        } else {
+                            const errorData = await response.json();
+                            throw new Error(errorData.message || response.statusText);
+                        }
+                    } catch (error) {
+                        console.error('Error deleting product:', error);
+                        alert('An error occurred while trying to delete the product: ' + error.message);
+                    }
+                }
+            });
+
+            fetchProducts(); // Initial fetch of products when page loads
+        });
+    </script>
+</body>
+</html>
